@@ -1,0 +1,38 @@
+# Python cache/runtime
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environments / local dependency installs
+.venv/
+venv/
+env/
+pyinstaller_local/
+
+# PyInstaller output
+build/
+dist/
+release/
+*.exe
+*.zip
+
+# Local app state
+sc_craft_tool_settings.json
+pasted_order.txt
+
+# User/customer/order files and DAoC character files
+*.ini
+*.log
+*.dat
+*.ign
+converted/
+*Backup*.ini
+*backup*.ini
+*_Summary.txt
+*_SC-Report.txt
+
+# Editor / OS noise
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
