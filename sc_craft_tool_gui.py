@@ -1253,16 +1253,20 @@ class CraftToolApp(tk.Tk):
     def _gem_visual_icon_key(self, gem: object) -> str:
         name = getattr(gem, "zenk_gem_name", "").lower()
         type_name = getattr(gem, "type", "").lower()
-        if any(key in name or key in type_name for key in ("blood", "fiery", "heated", "cinder", "steaming")):
+        if any(key in name or key in type_name for key in ("blood", "heated", "cinder", "steaming")):
             return "red"
-        if any(key in name or key in type_name for key in ("earthen", "dusty", "radiant", "salt")):
+        if "fiery" in name or "fiery" in type_name:
             return "amber"
-        if any(key in name or key in type_name for key in ("watery", "icy", "glacier")):
+        if any(key in name or key in type_name for key in ("earthen", "radiant")):
+            return "green"
+        if any(key in name or key in type_name for key in ("watery", "glacier")):
             return "blue"
-        if any(key in name or key in type_name for key in ("airy", "vapor", "light", "finesse")):
-            return "white"
-        if any(key in name or key in type_name for key in ("mystic", "mystical", "magnetic", "ashen")):
+        if "dusty" in name or "dusty" in type_name:
             return "purple"
+        if any(key in name or key in type_name for key in ("airy", "light", "finesse", "salt")):
+            return "white"
+        if any(key in name or key in type_name for key in ("icy", "vapor", "mystic", "mystical", "magnetic", "ashen")):
+            return "yellow"
         return "amber"
 
     def _gem_visual_color(self, gem: object) -> str:
