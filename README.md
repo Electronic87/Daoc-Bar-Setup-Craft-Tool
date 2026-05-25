@@ -53,6 +53,6 @@ Current source is V3. Albion, Midgard, and Hibernia gems are supported. A few hi
 
 ## Disclaimer
 
-Daoc Bar setup and craft tool (c) 2026 Electronic87 - A non-commercial fan project. Not affiliated with Electronic Arts, Broadsword Online Games, Mythic Entertainment, Eden-DAoC.net, DAoC Tools, or Zenkcraft. Dark Age of Camelot is a trademark of its respective owners.
+Daoc Bar setup and craft tool (c) 2026 Electronic87 - A non-commercial fan project. Not affiliated with Electronic Arts, Broadsword Online Games, Mythic Entertainment, Eden-DAoC.net, DAoC Tools, Template Forge, or Zenkcraft. Dark Age of Camelot and related names, marks, and visual references belong to their respective owners.
 
 Built by Electronic87 with AI-assisted coding support from OpenAI Codex. The author reviewed and directed the features, behavior, testing, and packaging.
