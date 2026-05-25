@@ -4,6 +4,12 @@ Unofficial Windows tool for DAoC Eden spellcrafters.
 
 Paste an order, open an order file, or read `chat.log`; the tool finds the spellcraft gems, shows the quickbar order, and can set your Eden hotbars after making a backup.
 
+## Screenshots
+
+![Main app overview](docs/images/app-overview.png)
+
+![Quickbar visual close-up](docs/images/quickbar-visual.png)
+
 ## Features
 
 - Paste Discord/customer text from your clipboard.
