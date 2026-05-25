@@ -39,6 +39,8 @@ from sc_converter import (
 
 DEFAULT_SLOT_ORDER = parse_slot_order("head,arms,hands,legs,feet,mainhand,offhand,twohanded,ranged")
 APP_NAME = "Daoc Bar setup and craft tool"
+APP_VERSION = "3.0.2"
+APP_TITLE = f"{APP_NAME} v{APP_VERSION}"
 APP_NOTICE = (
     "Daoc Bar setup and craft tool © 2026 Electronic87 - A non-commercial fan project. "
     "Not affiliated with EA, Broadsword, Mythic, Eden, DAoC Tools, Template Forge, or Zenkcraft. "
@@ -172,7 +174,7 @@ def resource_path(name: str) -> Path:
 class CraftToolApp(tk.Tk):
     def __init__(self) -> None:
         super().__init__()
-        self.title(APP_NAME)
+        self.title(APP_TITLE)
         icon_path = resource_path("daoc_craft_tool.ico")
         if icon_path.exists():
             try:
@@ -303,7 +305,7 @@ class CraftToolApp(tk.Tk):
         logo = tk.Canvas(hero, width=74, height=74, bg=PANEL_SOFT, highlightthickness=0)
         logo.grid(row=0, column=0, rowspan=3, sticky=tk.W, padx=(0, 14))
         self._draw_spellcraft_logo(logo, 74)
-        ttk.Label(hero, text=APP_NAME, style="HeroTitle.TLabel").grid(row=0, column=1, sticky=tk.W)
+        ttk.Label(hero, text=APP_TITLE, style="HeroTitle.TLabel").grid(row=0, column=1, sticky=tk.W)
         ttk.Label(
             hero,
             text="Paste an order, preview the gems, and set Eden quickbars safely.",

@@ -8,7 +8,9 @@ Paste an order, open an order file, or read `chat.log`; the tool finds the spell
 
 ![Main app overview](docs/images/app-overview.png)
 
-![Quickbar visual close-up](docs/images/quickbar-visual.png)
+![First gem hover highlight](docs/images/bar-hover-first-gem.png)
+
+![Third gem hover highlight](docs/images/bar-hover-third-gem.png)
 
 ## Features
 
@@ -22,7 +24,7 @@ Paste an order, open an order file, or read `chat.log`; the tool finds the spell
 
 ## First Use
 
-1. Open `Daoc Bar setup and craft tool V3.exe`.
+1. Open `Daoc Bar setup and craft tool v3.0.2.exe`.
 2. Pick the realm for the order.
 3. Choose `Pasted text`, `Order file`, or `Chat log`.
 4. Paste/import the order.
@@ -69,7 +71,7 @@ Do not commit personal/customer files such as `.ini`, `.log`, customer order rep
 
 ## Status
 
-Current source is V3. Albion, Midgard, and Hibernia gems are supported.
+Current source is v3.0.2. Albion, Midgard, and Hibernia gems are supported.
 
 Known limits:
 

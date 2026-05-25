@@ -20,7 +20,7 @@ This app is a Windows Tkinter/PyInstaller desktop tool.
 4. The executable will be created at:
 
    ```text
-   dist\Daoc Bar setup and craft tool V3.exe
+   dist\Daoc Bar setup and craft tool v3.0.2.exe
    ```
 
 ## Release Packaging
@@ -29,8 +29,8 @@ For GitHub, prefer publishing the compiled `.exe` and `.zip` under GitHub Releas
 
 A simple release zip should contain:
 
-- `Daoc Bar setup and craft tool V3.exe`
-- `README_V3.txt`
+- `Daoc Bar setup and craft tool v3.0.2.exe`
+- `README.txt`
 
 ## Notes
 
