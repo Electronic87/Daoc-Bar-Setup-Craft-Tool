@@ -1364,6 +1364,16 @@ def category_from_effect(effect_group: str, effect_display: str) -> str:
     return "stat"
 
 
+def spellcraft_category_from_effect(effect_group: str, effect_display: str) -> str | None:
+    group = clean_key(effect_group)
+    display = clean_key(effect_display)
+    if group in {"stat", "h p", "hp", "hits", "power", "focus", "resist", "skill"}:
+        return category_from_effect(effect_group, effect_display)
+    if display in {"hit points", "hits", "power"} or display.endswith("focus"):
+        return category_from_effect(effect_group, effect_display)
+    return None
+
+
 def infer_from_gem_name(name: str) -> tuple[int, str, str]:
     tier_name, rest = split_tier_from_name(name)
     tier = TIER_BY_NAME[tier_name.lower()]
@@ -1611,10 +1621,6 @@ def parse_legacy_or_forge_text(text: str, warnings: WarningBag, realm: str = "Al
         if "5th Slot" in line:
             continue
 
-        has_spellcraft_source = source_type in {"spellcraft", "spellcrafted"} or "[(" in line or re.match(r"^Juwel\s+\d+:", line, re.I)
-        if not has_spellcraft_source:
-            continue
-
         parsed = parse_bracketed_gem_line(line)
         if parsed is not None:
             group, display, value, gem_name = parsed
@@ -1624,7 +1630,10 @@ def parse_legacy_or_forge_text(text: str, warnings: WarningBag, realm: str = "Al
             if effect is None:
                 continue
             group, display, value = effect
-            category = category_from_effect(group, display)
+            category = spellcraft_category_from_effect(group, display)
+            can_infer_without_name = source_type in {"spellcraft", "spellcrafted", "legendary"}
+            if category is None or not can_infer_without_name:
+                continue
             gem = gem_from_effect(category, display, value, warnings, realm)
         if gem:
             current.gems.append(gem)
@@ -1922,6 +1931,14 @@ def parse_freeform_gem_text(text: str, warnings: WarningBag, slot_order: list[st
     current: Item | None = None
     anonymous_gems: list[Gem] = []
 
+    def append_gem(gem: Gem | None) -> None:
+        if gem is None:
+            return
+        if current is not None:
+            current.gems.append(gem)
+        else:
+            anonymous_gems.append(gem)
+
     for line in freeform_order_lines(text):
         slot = slot_from_label(line.rstrip(":"))
         if slot:
@@ -1929,14 +1946,15 @@ def parse_freeform_gem_text(text: str, warnings: WarningBag, slot_order: list[st
             items.append(current)
             continue
 
+        parsed = parse_bracketed_gem_line(line)
+        if parsed is not None:
+            group, display, value, gem_name = parsed
+            append_gem(gem_from_name(gem_name, warnings, group, display, value, realm=realm))
+            continue
+
         for phrase in split_freeform_gem_phrases(line):
             gem = gem_from_loose_name(phrase, warnings, realm)
-            if gem is None:
-                continue
-            if current is not None:
-                current.gems.append(gem)
-            else:
-                anonymous_gems.append(gem)
+            append_gem(gem)
 
     for index in range(0, len(anonymous_gems), 4):
         group = anonymous_gems[index : index + 4]

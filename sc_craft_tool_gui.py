@@ -40,7 +40,7 @@ from sc_converter import (
 DEFAULT_SLOT_ORDER = parse_slot_order("head,arms,hands,legs,feet,mainhand,offhand,twohanded,ranged")
 APP_NAME = "Daoc Bar setup and craft tool"
 APP_NOTICE = (
-    "Daoc Bar setup and craft tool (c) 2026 Electronic87 - A non-commercial fan project. "
+    "Daoc Bar setup and craft tool © 2026 Electronic87 - A non-commercial fan project. "
     "Not affiliated with EA, Broadsword, Mythic, Eden, DAoC Tools, Template Forge, or Zenkcraft. "
     "Built with AI-assisted coding support from OpenAI Codex."
 )

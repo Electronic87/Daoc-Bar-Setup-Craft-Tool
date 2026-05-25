@@ -54,6 +54,6 @@ Known V3 limits:
 - Chat log and pasted text parsing can correct simple typos, but it will not guess missing tiers.
 - If a Midgard order gives only a bare duplicated gem name like Raw Fiery Primal Rune without the stat/skill line, the tool cannot know which duplicate skill was intended. Full order text avoids this.
 
-Daoc Bar setup and craft tool (c) 2026 Electronic87 - A non-commercial fan project. Not affiliated with Electronic Arts, Broadsword Online Games, Mythic Entertainment, Eden-DAoC.net, DAoC Tools, Template Forge, or Zenkcraft. Dark Age of Camelot and related names, marks, and visual references belong to their respective owners.
+Daoc Bar setup and craft tool © 2026 Electronic87 - A non-commercial fan project. Not affiliated with Electronic Arts, Broadsword Online Games, Mythic Entertainment, Eden-DAoC.net, DAoC Tools, Template Forge, or Zenkcraft. Dark Age of Camelot and related names, marks, and visual references belong to their respective owners.
 
 Built by Electronic87 with AI-assisted coding support from OpenAI Codex. The author reviewed and directed the features, behavior, testing, and packaging.
