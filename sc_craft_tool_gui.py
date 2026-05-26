@@ -42,13 +42,14 @@ APP_NAME = "Daoc Bar setup and craft tool"
 APP_VERSION = "3.0.2"
 APP_TITLE = f"{APP_NAME} v{APP_VERSION}"
 APP_NOTICE = (
-    "Daoc Bar setup and craft tool © 2026 Electronic87 - A non-commercial fan project. "
-    "Not affiliated with EA, Broadsword, Mythic, Eden, DAoC Tools, Template Forge, or Zenkcraft. "
-    "Built with AI-assisted coding support from OpenAI Codex."
+    "Daoc Bar setup and craft tool © 2026 Electronic87. Fan project; not affiliated with "
+    "EA/Broadsword/Mythic/Eden/DAoC Tools/Template Forge/Zenkcraft. Built with OpenAI Codex."
 )
 MIN_WINDOW_WIDTH = 980
 MIN_WINDOW_HEIGHT = 620
 EXPORT_MIN_WINDOW_HEIGHT = 760
+WINDOW_SCREEN_MARGIN_X = 80
+WINDOW_SCREEN_MARGIN_Y = 90
 BAR_VISUAL_WIDTH = 650
 BAR_VISUAL_HEIGHT = 86
 BG = "#101418"
@@ -245,6 +246,7 @@ class CraftToolApp(tk.Tk):
         self._build_ui()
         self._apply_window_minimum()
         self._refresh_preview()
+        self._fit_initial_window_to_content()
 
     def _build_ui(self) -> None:
         style = ttk.Style(self)
@@ -258,6 +260,7 @@ class CraftToolApp(tk.Tk):
         style.configure("TLabel", background=BG, foreground=TEXT, font=("Segoe UI", 10))
         style.configure("HeroTitle.TLabel", background=PANEL_SOFT, foreground="#ffffff", font=("Segoe UI", 22, "bold"))
         style.configure("HeroSub.TLabel", background=PANEL_SOFT, foreground=MUTED, font=("Segoe UI", 10))
+        style.configure("Footer.TLabel", background=BG, foreground="#7f8b95", font=("Segoe UI", 7))
         style.configure("PanelTitle.TLabel", background=PANEL, foreground="#ffffff", font=("Segoe UI", 11, "bold"))
         style.configure("Panel.TLabel", background=PANEL, foreground=TEXT, font=("Segoe UI", 10))
         style.configure("Muted.Panel.TLabel", background=PANEL, foreground=MUTED, font=("Segoe UI", 9))
@@ -498,9 +501,8 @@ class CraftToolApp(tk.Tk):
         ttk.Label(
             root,
             text=APP_NOTICE,
-            style="HeroSub.TLabel",
-            wraplength=1120,
-        ).pack(anchor=tk.W, fill=tk.X, pady=(10, 0))
+            style="Footer.TLabel",
+        ).pack(anchor=tk.W, fill=tk.X, pady=(5, 0))
 
     def _make_realm_selector(self, parent: tk.Widget) -> tk.Canvas:
         canvas = tk.Canvas(
@@ -599,6 +601,22 @@ class CraftToolApp(tk.Tk):
         max_height = max(min_height, self.winfo_screenheight() - 100)
         next_height = max(min_height, min(max_height, height + delta))
         self.geometry(f"{max(width, min_width)}x{next_height}")
+
+    def _fit_initial_window_to_content(self) -> None:
+        self.update_idletasks()
+        screen_width = self.winfo_screenwidth()
+        screen_height = self.winfo_screenheight()
+        max_width = max(self.base_min_width, screen_width - WINDOW_SCREEN_MARGIN_X)
+        max_height = max(self.base_min_height, screen_height - WINDOW_SCREEN_MARGIN_Y)
+        requested_width = self.scroll_frame.winfo_reqwidth() + self.scrollbar.winfo_reqwidth() + 10
+        requested_height = self.scroll_frame.winfo_reqheight() + 6
+        width = min(max(self.winfo_width(), requested_width, self.base_min_width), max_width)
+        height = min(max(self.winfo_height(), requested_height, self.base_min_height), max_height)
+        x = max(0, (screen_width - width) // 2)
+        y = max(0, (screen_height - height) // 2)
+        self.geometry(f"{width}x{height}+{x}+{y}")
+        self.scroll_canvas.yview_moveto(0)
+        self.update_idletasks()
 
     def _apply_window_minimum(self) -> None:
         export_open = bool(hasattr(self, "export_panel") and self.export_panel.winfo_ismapped())
