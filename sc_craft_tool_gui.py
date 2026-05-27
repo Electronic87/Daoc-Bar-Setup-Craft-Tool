@@ -653,7 +653,7 @@ class CraftToolApp(tk.Tk):
 
     def _load_daoc_gem_icons(self) -> None:
         icon_dir = resource_path("daoc_gem_icons")
-        for key in ("red", "amber", "green", "cyan", "blue", "purple", "yellow", "white"):
+        for key in ("red", "amber", "green", "cyan", "blue", "purple", "yellow", "white", "dark"):
             icon_path = icon_dir / f"{key}.png"
             if not icon_path.exists():
                 continue
@@ -1282,7 +1282,7 @@ class CraftToolApp(tk.Tk):
         if any(key in name or key in type_name for key in ("watery", "glacier")):
             return "blue"
         if "dusty" in name or "dusty" in type_name:
-            return "purple"
+            return "dark"
         if any(key in name or key in type_name for key in ("airy", "light", "finesse", "salt")):
             return "white"
         if any(key in name or key in type_name for key in ("icy", "vapor", "mystic", "mystical", "magnetic", "ashen")):
