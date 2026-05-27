@@ -1442,10 +1442,9 @@ def gem_from_name(
     realm: str = "Albion",
     effect_type: str | None = None,
 ) -> Gem | None:
-    if "not found" in name.lower():
-        return None
-
     canonical = canonical_gem_name(name)
+    if "not found" in canonical.lower() or re.match(r"^\?\s+", canonical):
+        return None
     try:
         tier, inferred_category, inferred_type = infer_from_gem_name(canonical)
     except ValueError:

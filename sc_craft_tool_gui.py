@@ -39,7 +39,7 @@ from sc_converter import (
 
 DEFAULT_SLOT_ORDER = parse_slot_order("head,arms,hands,legs,feet,mainhand,offhand,twohanded,ranged")
 APP_NAME = "Daoc Bar setup and craft tool"
-APP_VERSION = "3.0.2"
+APP_VERSION = "3.0.3"
 APP_TITLE = f"{APP_NAME} v{APP_VERSION}"
 APP_NOTICE = (
     "Daoc Bar setup and craft tool © 2026 Electronic87. Fan project; not affiliated with "

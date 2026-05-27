@@ -29,7 +29,7 @@ exe = EXE(
     a.binaries,
     a.datas,
     [],
-    name='Daoc Bar setup and craft tool v3.0.2',
+    name='Daoc Bar setup and craft tool v3.0.3',
     debug=False,
     bootloader_ignore_signals=False,
     strip=False,
